@@ -1,4 +1,4 @@
-const degreeElement = document.querySelector('.tempature-degree')
+const degreeElement = document.querySelector('.tempature_degree')
 const descriptionElement = document.querySelector(".tempature-description")
 const formElement = document.querySelector(".form")
  console.log(degreeElement)
