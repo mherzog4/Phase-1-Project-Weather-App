@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const degreeElement = document.querySelector('.tempature-degree')
     const descriptionElement = document.querySelector('.tempature-descrption')
     const formElement = document.querySelector('.form')
+    const locationElement = document.querySelector(".location-timezone")
     
     formElement.addEventListener("submit", (e) => {
         e.preventDefault()
@@ -16,6 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
             .then(weatherObj => {
                 degreeElement.textContent = weatherObj['current']['temp_f']
                 descriptionElement.textContent = weatherObj['current']['condition']['text']
+                locationElement.textContent = weatherObj['location']['name'] + ', ' + weatherObj['location']['region'] + ', ' + weatherObj['location']['country']
+
             })
     }
 
