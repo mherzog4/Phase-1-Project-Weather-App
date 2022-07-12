@@ -1,7 +1,8 @@
 window.addEventListener('DOMContentLoaded', () => {
     const degreeElement = document.querySelector('.tempature-degree')
-    const descriptionElement = document.querySelector(".tempature-descrption")
-    const formElement = document.querySelector(".form")
+    const descriptionElement = document.querySelector('.tempature-descrption')
+    const formElement = document.querySelector('.form')
+    
     formElement.addEventListener("submit", (e) => {
         e.preventDefault()
         renderWeather(e.target.submitField.value)
@@ -17,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 descriptionElement.textContent = weatherObj['current']['condition']['text']
             })
     }
-    
+
     
 })
 
