@@ -10,22 +10,25 @@
             <script src="/index.js"></script>
         </head>
         <body>
-            <form action="#" method="post" class="form">
-                <label for="submitField">Search for weather here:</label><br>
-                <input type="search" id="submitField" name="submitField">
-                <input type="submit" id="submit-btn" name="submit-btn">
-            </form>
-            <div class="location">
-                <h1 class="location-timezone">Location</h1>
+            <div class="card">
+                <form action="#" method="post" class="form">
+                    <label for="submitField">Search for weather here:</label><br>
+                    <input type="search" id="submitField" name="submitField">
+                    <input type="submit" id="submit-btn" name="submit-btn">
+                </form>
+                <h1 class="place">Place</h1>
+                <h1 class="region">Region</h1>
+                <h1 class="country">Country</h1>
                 <canvas class="icon" width="128" height="128"></canvas>
-            </div>
-            <div class="tempature">
                 <div class="degree-section">
                     <h2 class="tempature-degree">34</h2>
                     <span>F</span>
-                    <!-- <span>&#8451;</span> -->
                 </div>
-                <div class="tempature-descrption">Its cold</div>
+                <p class="tempature-descrption">Its cold</p>
+                <button class="todayButton">Today</button>
+                <button class="forcastButton">Forcast</button>              
+            </div>
+            <div class="forcast">
             </div>
         </body>
     </html>

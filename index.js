@@ -2,16 +2,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const tempElement = document.querySelector('.tempature-degree')
     const descriptionElement = document.querySelector('.tempature-descrption')
     const formElement = document.querySelector('.form')
-    const locationElement = document.querySelector('.location-timezone')
-    const tempSpan = document.querySelector('.tempature span')
+    const placeElement = document.querySelector('.place')
+    const regionElement = document.querySelector('.region')
+    const countryElement = document.querySelector('.country')
+    const tempSpan = document.querySelector('.degree-section span')
+    const todayButton = document.querySelector('.todayButton')
+    const forcastButton = document.querySelector('.forcastButton')
+
+
 
     formElement.addEventListener("submit", (e) => {
         e.preventDefault()
         renderWeather(e.target.submitField.value)
         e.target.submitField.value = ''
     })
-
-    
 
     renderWeather('London')
     
@@ -21,10 +25,11 @@ window.addEventListener('DOMContentLoaded', () => {
             .then(weatherObj => {
                 tempElement.textContent = weatherObj['current']['temp_f']
                 descriptionElement.textContent = weatherObj['current']['condition']['text']
-                locationElement.textContent = weatherObj['location']['name'] + ', ' + weatherObj['location']['region'] + ', ' + weatherObj['location']['country']
+                placeElement.textContent = weatherObj['location']['name']
+                regionElement.textContent = weatherObj['location']['region']
+                countryElement.textContent = weatherObj['location']['country']
                 
                 tempElement.addEventListener('click', () => {
-                    console.log(tempSpan)
                     if (tempSpan.textContent === 'F') {
                         tempSpan.textContent = 'C'
                         tempElement.textContent = weatherObj['current']['temp_c']
@@ -34,7 +39,17 @@ window.addEventListener('DOMContentLoaded', () => {
             
                     }
                 })
+                
+                showForcast(weatherObj)
             })
+    }
+
+
+    function showForcast(weatherObj) {
+        
+        weatherObj.forecastday.forEach(day => {
+            const dayDiv = day.date
+        })
     }
 })
 

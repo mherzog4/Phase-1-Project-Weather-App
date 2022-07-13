@@ -12,5 +12,13 @@ body{
     align-items: center;
     background: linear-gradient(rgb(47,150,153), rgb(48,52,143));
     font-family: sans-serif;
+}
+
+.card{
+    background-color: #000000d0;
+    padding: 2em;
+    border-radius: 30px;
+    width: 100%;
+    margin: 1em;
     color: white;
 }
