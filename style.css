@@ -22,3 +22,11 @@ body{
     margin: 1em;
     color: white;
 }
+
+.today {
+    display: none;
+}
+
+.forecast {
+    display: none;
+}

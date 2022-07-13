@@ -9,43 +9,48 @@ window.addEventListener('DOMContentLoaded', () => {
     const todayButton = document.querySelector('.todayButton')
     const forcastButton = document.querySelector('.forcastButton')
     const forcastDiv = document.querySelector('.forcast')
+    const todayElement = document.querySelector('.today')
+
+    let temp_c
+    let temp_f 
 
     formElement.addEventListener("submit", (e) => {
         e.preventDefault()
         renderWeather(e.target.submitField.value)
         e.target.submitField.value = ''
+        todayElement.style.display = 'block'
     })
 
-    renderWeather('London')
-
     forcastButton.addEventListener('click', {
-
+          
     })
 
     todayButton.addEventListener('click', {
 
     })
 
+    tempElement.addEventListener('click', () => {
+        if (tempSpan.textContent === 'F') {
+            tempSpan.textContent = 'C'
+            tempElement.textContent = temp_c
+        } else {
+            tempSpan.textContent = 'F'
+            tempElement.textContent = temp_f
+
+        }
+    })
+
     function renderWeather (loc) {
         fetch (`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${loc}&days=5&aqi=no&alerts=no1`)
             .then(resp => resp.json())
             .then(weatherObj => {
+                temp_c = weatherObj['current']['temp_c']
+                temp_f = weatherObj['current']['temp_f']
                 tempElement.textContent = weatherObj['current']['temp_f']
                 descriptionElement.textContent = weatherObj['current']['condition']['text']
                 placeElement.textContent = weatherObj['location']['name']
                 regionElement.textContent = weatherObj['location']['region']
                 countryElement.textContent = weatherObj['location']['country']
-                
-                tempElement.addEventListener('click', () => {
-                    if (tempSpan.textContent === 'F') {
-                        tempSpan.textContent = 'C'
-                        tempElement.textContent = weatherObj['current']['temp_c']
-                    } else {
-                        tempSpan.textContent = 'F'
-                        tempElement.textContent = weatherObj['current']['temp_f']
-            
-                    }
-                })
                 
                 createForcast(weatherObj)
             })
@@ -54,13 +59,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function createForcast(weatherObj) {
         forcastDiv.innerHTML = ''
-        weatherObj.forecastday.forEach(day => {
+        weatherObj.forecast.forecastday.forEach(day => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
-            dateText = day.date
+            const avgTemp = document.createElement('p')
+            dateText.textContent = day.date
             dayDiv.append(dateText)
+            avgTemp.textContent = day.day.maxtemp_f
+            dayDiv.append(avgTemp)
             forcastDiv.append(dayDiv)
         })
+
     }
 })
 
