@@ -7,8 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const countryElement = document.querySelector('.country')
     const tempSpan = document.querySelector('.degree-section span')
     const todayButton = document.querySelector('.todayButton')
-    const forcastButton = document.querySelector('.forcastButton')
-    const forcastDiv = document.querySelector('.forcast')
+    const forecastButton = document.querySelector('.forecastButton')
+    const forecastDiv = document.querySelector('.forecast')
     const todayElement = document.querySelector('.today')
 
     let temp_c
@@ -19,14 +19,9 @@ window.addEventListener('DOMContentLoaded', () => {
         renderWeather(e.target.submitField.value)
         e.target.submitField.value = ''
         todayElement.style.display = 'block'
-    })
-
-    forcastButton.addEventListener('click', {
-          
-    })
-
-    todayButton.addEventListener('click', {
-
+        forecastDiv.style.display = 'none'
+        todayButton.style.visibility = 'visible'
+        forecastButton.style.visibility = 'visible'
     })
 
     tempElement.addEventListener('click', () => {
@@ -36,7 +31,6 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             tempSpan.textContent = 'F'
             tempElement.textContent = temp_f
-
         }
     })
 
@@ -51,14 +45,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 placeElement.textContent = weatherObj['location']['name']
                 regionElement.textContent = weatherObj['location']['region']
                 countryElement.textContent = weatherObj['location']['country']
-                
                 createForcast(weatherObj)
             })
     }
 
 
     function createForcast(weatherObj) {
-        forcastDiv.innerHTML = ''
+        forecastDiv.innerHTML = ''
         weatherObj.forecast.forecastday.forEach(day => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
@@ -67,9 +60,19 @@ window.addEventListener('DOMContentLoaded', () => {
             dayDiv.append(dateText)
             avgTemp.textContent = day.day.maxtemp_f
             dayDiv.append(avgTemp)
-            forcastDiv.append(dayDiv)
+            forecastDiv.append(dayDiv)
         })
-
+        
     }
+
+    forecastButton.addEventListener('click', () => {
+        todayElement.style.display = 'none'
+        forecastDiv.style.display = 'block'
+    })
+
+    todayButton.addEventListener('click', () => {
+        todayElement.style.display = 'block'
+        forecastDiv.style.display = 'none'
+    })
 })
 
