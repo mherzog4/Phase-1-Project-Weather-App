@@ -8,8 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const tempSpan = document.querySelector('.degree-section span')
     const todayButton = document.querySelector('.todayButton')
     const forcastButton = document.querySelector('.forcastButton')
-
-
+    const forcastDiv = document.querySelector('.forcast')
 
     formElement.addEventListener("submit", (e) => {
         e.preventDefault()
@@ -18,7 +17,15 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     renderWeather('London')
-    
+
+    forcastButton.addEventListener('click', {
+
+    })
+
+    todayButton.addEventListener('click', {
+
+    })
+
     function renderWeather (loc) {
         fetch (`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${loc}&days=5&aqi=no&alerts=no1`)
             .then(resp => resp.json())
@@ -40,15 +47,19 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 })
                 
-                showForcast(weatherObj)
+                createForcast(weatherObj)
             })
     }
 
 
-    function showForcast(weatherObj) {
-        
+    function createForcast(weatherObj) {
+        forcastDiv.innerHTML = ''
         weatherObj.forecastday.forEach(day => {
-            const dayDiv = day.date
+            const dayDiv = document.createElement('div')
+            const dateText = document.createElement('h3')
+            dateText = day.date
+            dayDiv.append(dateText)
+            forcastDiv.append(dayDiv)
         })
     }
 })
