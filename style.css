@@ -3,7 +3,8 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(rgb(47,150,153), rgb(48,52,143));
+    background-image: url('https://images3.alphacoders.com/958/958333.png');
+    background-color: #cccccc;
     font-family: sans-serif;
     margin: 0;
 }

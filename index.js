@@ -5,7 +5,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const placeElement = document.querySelector('.place')
     const regionElement = document.querySelector('.region')
     const countryElement = document.querySelector('.country')
-    const tempSpan = document.querySelector('.degree-section span')
     const todayButton = document.querySelector('.todayButton')
     const forecastButton = document.querySelector('.forecastButton')
     const forecastDiv = document.querySelector('.forecast')
@@ -25,12 +24,10 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 
     tempElement.addEventListener('click', () => {
-        if (tempSpan.textContent === 'F') {
-            tempSpan.textContent = 'C'
-            tempElement.textContent = temp_c
+        if (tempElement.textContent == temp_f + ' °F') {
+            tempElement.textContent = temp_c + ' °C'
         } else {
-            tempSpan.textContent = 'F'
-            tempElement.textContent = temp_f
+            tempElement.textContent = temp_f + ' °F'
         }
     })
 
@@ -56,8 +53,8 @@ window.addEventListener('DOMContentLoaded', () => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
             const avgTemp = document.createElement('p')
-            const avgTemp_c = day.day.avgtemp_c + ' C'
-            const avgTemp_f = day.day.avgtemp_f + ' F'
+            const avgTemp_c = day.day.avgtemp_c + ' °C'
+            const avgTemp_f = day.day.avgtemp_f + ' °F'
 
             dateText.textContent = day.date
             dayDiv.append(dateText)
