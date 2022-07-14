@@ -56,9 +56,19 @@ window.addEventListener('DOMContentLoaded', () => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
             const avgTemp = document.createElement('p')
+            const avgTemp_c = day.day.avgtemp_c + ' C'
+            const avgTemp_f = day.day.avgtemp_f + ' F'
+
             dateText.textContent = day.date
             dayDiv.append(dateText)
-            avgTemp.textContent = day.day.maxtemp_f
+            avgTemp.textContent = avgTemp_f
+            avgTemp.addEventListener('click', () => {
+                if (avgTemp.textContent == avgTemp_c) {
+                    avgTemp.textContent = avgTemp_f
+                } else {
+                    avgTemp.textContent = avgTemp_c
+                }
+            })
             dayDiv.append(avgTemp)
             forecastDiv.append(dayDiv)
         })
