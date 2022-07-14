@@ -4,6 +4,9 @@
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" src="style.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
             <title>Weather Report</title>
             <link rel="stylesheet" href="/style.css">
             <script src="/secrets.js"></script>
@@ -12,17 +15,14 @@
         <body>
             <div class="card">
                 <form action="#" method="post" class="form">
-                    <label for="submitField">Search for weather here:</label><br>
-                    <input type="search" id="submitField" name="submitField">
-                    <input type="submit" id="submit-btn" name="submit-btn">
+                    <input type="search" id="submitField" name="submitField" placeholder="Search for weather">
+                    <input type="submit" id="submit-btn" name="submit-btn" value="AiOutlineSearch">
                 </form>
                 <div class="today">
-                    <h1 class="place">Place</h1>
-                    <h1 class="region">Region</h1>
-                    <h1 class="country">Country</h1>
-                    <div class="degree-section">
-                        <h2 class="tempature-degree">34 °F</h2>
-                    </div>
+                    <h2 class="place">Place</h2>
+                    <h2 class="region">Region</h2>
+                    <h2 class="country">Country</h2>
+                    <h1 class="tempature-degree">34 °F</h1>
                     <p class="tempature-descrption">Its cold</p>
                 </div>
                 <div class="forecast">

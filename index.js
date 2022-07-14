@@ -17,8 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault()
         renderWeather(e.target.submitField.value)
         e.target.submitField.value = ''
-        todayElement.style.display = 'block'
         forecastDiv.style.display = 'none'
+        todayElement.style.display = 'block'
         todayButton.style.visibility = 'visible'
         forecastButton.style.visibility = 'visible'
     })
@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
             .then(weatherObj => {
                 temp_c = weatherObj['current']['temp_c']
                 temp_f = weatherObj['current']['temp_f']
-                tempElement.textContent = weatherObj['current']['temp_f']
+                tempElement.textContent = weatherObj['current']['temp_f'] + ' °F'
                 descriptionElement.textContent = weatherObj['current']['condition']['text']
                 placeElement.textContent = weatherObj['location']['name']
                 regionElement.textContent = weatherObj['location']['region']
