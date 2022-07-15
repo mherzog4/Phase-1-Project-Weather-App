@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const forecastButton = document.querySelector('.forecastButton')
     const forecastDiv = document.querySelector('.forecast')
     const todayElement = document.querySelector('.today')
+    const iconElement = document.querySelector('.icon')
 
     let temp_c
     let temp_f 
@@ -42,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 placeElement.textContent = weatherObj['location']['name']
                 regionElement.textContent = weatherObj['location']['region']
                 countryElement.textContent = weatherObj['location']['country']
+                iconElement.src = weatherObj['current']['condition']['icon']
                 createForcast(weatherObj)
             })
     }
@@ -52,11 +54,11 @@ window.addEventListener('DOMContentLoaded', () => {
         weatherObj.forecast.forecastday.forEach(day => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
-            const avgTemp = document.createElement('h1')
+            const avgTemp = document.createElement('h2')
             const avgTemp_c = day.day.avgtemp_c + ' °C'
             const avgTemp_f = day.day.avgtemp_f + ' °F'
 
-            dateText.textContent = day.date
+            dateText.textContent = day.date.slice(6)
             dayDiv.append(dateText)
             avgTemp.textContent = avgTemp_f
             avgTemp.addEventListener('click', () => {
