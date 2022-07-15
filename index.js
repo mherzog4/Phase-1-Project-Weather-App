@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
         weatherObj.forecast.forecastday.forEach(day => {
             const dayDiv = document.createElement('div')
             const dateText = document.createElement('h3')
-            const avgTemp = document.createElement('p')
+            const avgTemp = document.createElement('h1')
             const avgTemp_c = day.day.avgtemp_c + ' °C'
             const avgTemp_f = day.day.avgtemp_f + ' °F'
 
